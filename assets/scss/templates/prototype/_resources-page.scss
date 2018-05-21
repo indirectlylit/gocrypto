@@ -1,0 +1,52 @@
+.resources-page {
+
+	&__header {
+		@include yellow-hero;
+	}
+
+	&__content {
+		@include section-padding;
+	}
+
+	&__more-btn {
+		text-align: center;
+	}
+}
+
+.resource-block {
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+	padding: 15px;
+	margin-bottom: 15px;
+	@include mq(md) {
+		padding: 20px;
+		margin-bottom: 30px;
+	}
+
+	&__title {
+		position: relative;
+		font-weight: 700;
+		margin-bottom: 0.75em;
+
+		@include mq(md) {
+
+			&:before {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				top: 0;
+				left: -20px;
+				border: 12px solid rgba($secondary-color, 0);
+				border-left: 12px solid $secondary-color;
+				border-right-width: 0;
+			}
+		}
+	}
+
+	&__btn {
+		display: block;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}

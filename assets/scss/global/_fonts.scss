@@ -1,0 +1,8 @@
+$font-dir: "../fonts";
+$font-formats: eot woff2 woff ttf;
+
+// Bold Condensed
+// @include font-face( HelveticaNeueLTStdBdCn, "#{$font-dir}/helvetica/35F945_1_0", 700, normal, $font-formats );
+
+// Bold Condensed italic
+// @include font-face( HelveticaNeueLTStdBdCn, "#{$font-dir}/helvetica/35F945_0_0", 700, italic, $font-formats );

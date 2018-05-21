@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i,400,400i,700,700i);
+@import "~normalize-scss/sass/normalize";
+@include normalize();
+@import "global/variables";
+
+// Import vendor files
+// @import "_vendor/foundation";
+@import "~bootstrap/scss/bootstrap";
+// @import "_vendor/bootstrap";
+
+// Globals
+@import "global/global";
+@import "base/base";
+@import "typography/typography";
+
+// Import theme styles
+@import "components/components";
+@import "layout/layout";
+@import "templates/templates";

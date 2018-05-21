@@ -1,0 +1,63 @@
+.section-cta {
+	position: relative;
+	background-size: cover;
+	text-align: center;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	overflow: hidden;
+	@include mq(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+	@include mq(lg) {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	@include mq(xl) {
+		padding-top: 120px;
+		padding-bottom: 120px;
+	}
+
+	&:before,
+	&:after {
+		position: absolute;
+		content: "";
+		display: block;
+		height: 200px;
+		width: 300px;
+		background-image: url(../img/geo-pattern-right.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+		bottom: -50%;
+		@include mq(md) {
+			height: 517px;
+			width: 430px;
+		}
+	}
+
+	&:before {
+		left: -50px;
+		transform: scaleX(-1) translateX(50%);
+		@include mq(md) {
+			left: 25px;
+		}
+		@include mq(lg) {
+			left: 50px;
+		}
+	}
+
+	&:after {
+		right: -50px;
+		transform: translateX(50%);
+		@include mq(md) {
+			right: 25px;
+		}
+		@include mq(lg) {
+			right: 50px;
+		}
+	}
+
+	.row {
+		justify-content: center;
+	}
+}

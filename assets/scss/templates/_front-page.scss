@@ -1,0 +1,32 @@
+.front-page {
+
+	&__blocks {
+		background-image: url(../img/bg_mb_white.jpg);
+		background-color: #fff;
+		background-position: bottom center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	&__header {
+
+		em {
+			color: $secondary-color;
+			font-weight: 400;
+		}
+	}
+
+	@include mq(md) {
+
+		&__header-img {
+			position: relative;
+
+			> svg {
+				position: absolute;
+				width: calc(100% + 50px);
+				top: -50px;
+				left: -20px;
+			}
+		}
+	}
+}

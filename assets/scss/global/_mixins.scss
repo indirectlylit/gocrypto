@@ -1,0 +1,380 @@
+@mixin empty-pseudo( $ps: after ) {
+
+	&:#{$ps} {
+		content: "";
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		left: 0;
+		display: block;
+	}
+}
+
+@mixin clearfix {
+
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin thumb-bg( $size: cover, $position: center, $repeat: no-repeat ) {
+	background-size: $size;
+	background-position: $position;
+	background-repeat: $repeat;
+}
+
+@mixin responsive-shape( $width: 100%, $ratio: 100%, $content-padding: 0 ) {
+	position: relative;
+	width: $width;
+
+	&::after {
+		content: "";
+		display: block;
+		padding-bottom: $ratio;
+	}
+}
+
+@mixin vertically-center() {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin optional-at-root($sel) {
+
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+
+		@content;
+	}
+}
+
+// Use for styling form field placeholders.
+@mixin placeholder {
+
+	@include optional-at-root("::-webkit-input-placeholder") {
+
+		/* WebKit browsers */
+		@content;
+	}
+
+	@include optional-at-root(":-moz-placeholder") {
+
+		/* Mozilla Firefox 4 to 18 */
+		@content;
+	}
+
+	@include optional-at-root("::-moz-placeholder") {
+
+		/* Mozilla Firefox 19+ */
+		@content;
+	}
+
+	@include optional-at-root(":-ms-input-placeholder") {
+
+		/* Internet Explorer 10+ */
+		@content;
+	}
+}
+
+// Burger parts
+//
+// (---) top    -> &::before
+// [---] middle -> &
+// (---) bottom -> &::after
+
+// Burger
+@mixin burger( $width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: 0.3s ) {
+	$burger-height: $height !global;
+	$burger-gutter: $gutter !global;
+	position: relative;
+	margin-top: $height + $gutter;
+	margin-bottom: $height + $gutter;
+	user-select: none;
+
+	// 1. Fixes jagged edges in Firefox, see issue #10.
+	&,
+	&::before,
+	&::after {
+		display: block;
+		width: $width;
+		height: $height;
+		background-color: $color;
+		outline: 1px solid transparent; // 1
+
+		@if $border-radius != 0 {
+			border-radius: $border-radius;
+		}
+		transition-property: background-color, transform;
+		transition-duration: $transition-duration;
+	}
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+	}
+
+	&::before {
+		top: -($height + $gutter);
+	}
+
+	&::after {
+		top: $height + $gutter;
+	}
+}
+
+
+// Select parts of the burger
+@mixin burger-parts {
+
+	&,
+	&::before,
+	&::after {
+
+		@content;
+	}
+}
+
+@mixin burger-top {
+
+	&::before {
+
+		@content;
+	}
+}
+
+@mixin burger-middle {
+
+	@content;
+}
+
+@mixin burger-bottom {
+
+	&::after {
+
+		@content;
+	}
+}
+
+
+// Burger animations
+@mixin burger-to-cross( $color: auto ) {
+	background-color: transparent;
+
+	@if ( $color != auto ) {
+
+		&::before,
+		&::after {
+			background-color: $color;
+		}
+	}
+
+	&::before {
+		transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+	}
+
+	&::after {
+		transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+	}
+}
+
+@mixin font-face( $name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg ) {
+	$src: null;
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// Breakpoint wrappers
+@mixin breakpoint( $bp: small ) {
+
+	@include media-breakpoint-up($bp) {
+
+		@content;
+	}
+}
+
+@mixin mq( $bp: small ) {
+
+	@include media-breakpoint-up($bp) {
+
+		@content;
+	}
+}
+
+// Heading mixin where all heading styles are setup!
+// This allows you to keep overrides consistent with your
+// base styles and keeps things DRY!
+@mixin heading( $lvl: h2, $color: null, $font: null ) {
+
+	// Universal heading styles
+	@if $color {
+		color: $color;
+	}
+
+	@if $font {
+		color: $font;
+	}
+
+	@if $lvl == h1 {
+		font-size: 24px;
+		font-weight: 300;
+
+		@include breakpoint(md) {
+			font-size: 36px;
+		}
+
+	} @else if $lvl == h2 {
+		font-size: 20px;
+		font-weight: 300;
+
+		@include breakpoint(md) {
+			font-size: 24px;
+		}
+
+	} @else if $lvl == h3 {
+		font-size: 18px;
+		font-weight: 300;
+
+		@include breakpoint(md) {
+			font-size: 20px;
+		}
+
+	} @else if $lvl == h4 {
+		font-size: 16px;
+		font-weight: 300;
+		color: $secondary-color;
+		font-style: italic;
+
+		@include breakpoint(md) {
+			font-size: 18px;
+		}
+
+	} @else if $lvl == h5 {
+		font-size: 14px;
+		font-weight: 300;
+
+		@include breakpoint(md) {
+			font-size: 16px;
+		}
+	}
+}
+
+// Yellow here image header
+@mixin yellow-hero {
+	background-color: $secondary-color;
+	background-image: url(../img/bg_motherboard.jpg);
+	background-size: cover;
+	background-position: center;
+	padding-top: 36px;
+	padding-bottom: 36px;
+	text-align: center;
+	@include mq(md) {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	.row {
+		justify-content: center;
+	}
+
+	h1,
+	h2 {
+		margin: 0;
+		margin-bottom: 0.5em;
+	}
+}
+
+@mixin section-padding {
+	padding-top: 38px;
+	padding-bottom: 38px;
+	@include mq(md) {
+		padding-top: 76px;
+		padding-bottom: 76px;
+	}
+}
+
+@mixin centered-header {
+
+	&__header {
+		@include section-padding;
+		text-align: center;
+
+		.row {
+			justify-content: center;
+		}
+	}
+}
+
+@mixin title-arrow {
+	position: relative;
+
+	@include mq(md) {
+
+		&:before {
+			content: "";
+			display: inline-block;
+			position: absolute;
+			top: 0.2em;
+			left: -1em;
+			border: 0.4em solid rgba($secondary-color, 0);
+			border-left: 0.4em solid $secondary-color;
+			border-right-width: 0;
+		}
+	}
+}
+
+@mixin sidebar-styles {
+	background-color: $light-gray;
+	padding: 15px;
+	@include mq(md) {
+		padding: 30px;
+	}
+
+	.widget {
+
+		margin-bottom: 30px;
+		@include mq(md) {
+			margin-bottom: 60px;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		ul {
+			padding-left: 1em;
+			list-style: none;
+
+			> li {
+				margin-bottom: 0.25em;
+			}
+		}
+
+		a {
+			color: $tertiary-color;
+			font-weight: 400;
+		}
+	}
+}

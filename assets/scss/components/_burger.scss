@@ -1,0 +1,33 @@
+.burger {
+	width: 80px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-radius: 4px;
+	z-index: 10;
+
+	&__line {
+
+		@include burger( 30px, 3px, 6px, $tertiary-color );
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -15px;
+		margin-top: -1.5px;
+
+		&--active {
+
+			@include burger-to-cross;
+
+			&::before,
+			&::after {
+				background-color: rgba($tertiary-color, 0.5);
+			}
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}

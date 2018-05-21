@@ -1,0 +1,48 @@
+.single-service {
+
+	@include centered-header;
+}
+
+.single-service-block {
+	$block: &;
+	margin-bottom: 1rem;
+
+	&__img {
+		margin-bottom: 1rem;
+	}
+
+	@include mq(md) {
+		margin-bottom: 3rem;
+
+		&__content {
+			padding-left: 50px;
+		}
+
+		&:nth-child(odd) {
+
+			#{$block}__content {
+				padding-left: 0;
+				padding-right: 50px;
+			}
+
+			#{$block}__row {
+
+				.col:first-child {
+					order: 2;
+				}
+
+				.col:nth-child(2) {
+					order: 1;
+				}
+			}
+		}
+
+		@include mq(lg) {
+			margin-bottom: 4rem;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

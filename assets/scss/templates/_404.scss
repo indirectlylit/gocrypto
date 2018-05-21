@@ -1,0 +1,27 @@
+.e404-page {
+
+	&__header {
+		@include section-padding;
+
+		.row {
+			justify-content: center;
+			text-align: center;
+		}
+	}
+
+	&__content {
+		@include section-padding;
+		padding-top: 0 !important;
+		text-align: center;
+
+		.row {
+			justify-content: center;
+			text-align: center;
+		}
+
+		.social-menu {
+			text-align: center !important;
+			padding: 0;
+		}
+	}
+}

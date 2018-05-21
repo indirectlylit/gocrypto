@@ -1,0 +1,121 @@
+.alt-block {
+	$block: &;
+	$before-size: 5000px;
+
+	position: relative;
+	padding-top: 36px;
+	padding-bottom: 36px;
+	@include mq(md) {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+	@include mq(lg) {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	@include mq(xl) {
+		padding-top: 160px;
+		padding-bottom: 160px;
+	}
+
+	&:before {
+		height: $before-size;
+		width: $before-size;
+		content: "";
+		display: block;
+		position: absolute;
+		background: $secondary-color;
+		top: 50%;
+	}
+
+	&:nth-child(even) {
+
+		&:before {
+			right: 50%;
+			transform: translateX(127%) translateY(-50%) rotate(-45deg);
+			@include mq(md) {
+				transform: translateX(125.5%) translateY(-50%) rotate(-45deg);
+			}
+			@include mq(lg) {
+				transform: translateX(127%) translateY(-50%) rotate(-45deg);
+			}
+			@include mq(xl) {
+				transform: translateX(130%) translateY(-50%) rotate(-45deg);
+			}
+		}
+	}
+
+	&:nth-child(odd) {
+
+		&:before {
+			left: 50%;
+			transform: translateX(-127%) translateY(-50%) rotate(-45deg);
+			@include mq(md) {
+				transform: translateX(-125.5%) translateY(-50%) rotate(-45deg);
+			}
+			@include mq(lg) {
+				transform: translateX(-127%) translateY(-50%) rotate(-45deg);
+			}
+			@include mq(xl) {
+				transform: translateX(-130%) translateY(-50%) rotate(-45deg);
+			}
+		}
+	}
+
+	&__icon {
+		display: none;
+		@include mq(md) {
+			display: block;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 154px;
+			width: 14%;
+
+			svg {
+				position: absolute;
+				transform: translate(-50%, -50%);
+				top: 50%;
+				left: 50%;
+				max-height: 100%;
+				max-width: 100%;
+			}
+		}
+
+		#{$block}:nth-child(odd) & {
+			left: 10px;
+		}
+
+		#{$block}:nth-child(even) & {
+			right: 10px;
+		}
+
+		@media screen and (min-width: 768px) and (max-width: 900px) {
+			width: 10%;
+		}
+
+		@media screen and (min-width: 992px) and (max-width: 1080px) {
+			width: 10%;
+		}
+
+		@media screen and (min-width: 1200px) and (max-width: 1249px) {
+			width: 6%;
+		}
+
+		@media screen and (min-width: 1250px) and (max-width: 1299px) {
+			width: 7%;
+		}
+
+		@media screen and (min-width: 1300px) and (max-width: 1349px) {
+			width: 8%;
+		}
+
+		@media screen and (min-width: 1350px) and (max-width: 1440px) {
+			width: 9%;
+		}
+
+		@media screen and (min-width: 1540px) {
+			width: 20%;
+		}
+	}
+}

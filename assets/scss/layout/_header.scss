@@ -1,0 +1,26 @@
+.masthead {
+	margin: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	@include mq(md) {
+		padding-top: 50px;
+		padding-bottom: 50px;
+
+		.row {
+			align-items: center;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+
+		&__nav-wrapper {
+			display: none;
+		}
+	}
+
+	&__burger {
+		@include mq(md) {
+			display: none;
+		}
+	}
+}

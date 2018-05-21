@@ -1,0 +1,83 @@
+/**
+ * WordPress Generated Classes
+ * @see http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+ */
+
+// Media alignment
+.alignnone {
+	margin-left: 0;
+	margin-right: 0;
+	max-width: 100%;
+	height: auto;
+}
+
+.aligncenter {
+	display: block;
+	height: auto;
+	margin: 0 auto;
+	margin-bottom: 7px;
+
+	@include media-breakpoint-up(md) {
+		margin-bottom: 15px;
+	}
+}
+
+.alignleft,
+.alignright {
+	height: auto;
+
+	@include media-breakpoint-up(md) {
+		margin-bottom: 15px;
+	}
+}
+
+@include media-breakpoint-up(md) {
+
+	.alignleft {
+		float: left;
+
+		@include media-breakpoint-up(md) {
+			margin-right: 15px;
+		}
+	}
+
+	.alignright {
+		float: right;
+
+		@include media-breakpoint-up(md) {
+			margin-left: 15px;
+		}
+	}
+}
+
+// Captions
+.wp-caption {
+	background: rgba($light-gray, 0.5);
+
+	img {
+		border: 0 none;
+		width: auto;
+		height: auto;
+		margin: 0;
+		padding: 0;
+	}
+
+	&-text {
+		font-size: 12px;
+		font-weight: 400;
+		font-style: italic;
+		padding: 2px 6px 4px;
+	}
+}
+
+// Text meant only for screen readers
+.screen-reader-text {
+
+	@include sr-only;
+}
+
+// Make sure that the WP admin-bar does not overlap Bootstrap components
+body.admin-bar {
+
+	// Put stuff here.
+}

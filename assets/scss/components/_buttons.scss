@@ -1,0 +1,22 @@
+.btn {
+	text-decoration: none;
+	border-radius: 2px;
+	@include mq(md) {
+		padding: 10px 58px;
+		font-size: 18px;
+	}
+
+
+	&-primary {
+		background-color: $tertiary-color;
+		border-color: $tertiary-color;
+		color: $primary-color;
+
+		&:hover,
+		&:focus {
+			background-color: $primary-color;
+			border-color: $primary-color;
+			color: #fff;
+		}
+	}
+}

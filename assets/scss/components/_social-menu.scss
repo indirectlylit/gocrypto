@@ -1,0 +1,100 @@
+$icon-size: 18px;
+
+.social-menu {
+	list-style: none;
+	margin: 0;
+	height: $icon-size;
+
+	@include media-breakpoint-up(md) {
+		text-align: right;
+	}
+
+	.icon {
+		height: $icon-size;
+		width: $icon-size;
+		vertical-align: top;
+		display: inline-block;
+		fill: currentColor;
+		position: relative;
+		transition: 0.3s fill;
+
+		path {
+			transition: 0.3s fill;
+		}
+	}
+
+	.menu-item {
+		display: inline-block;
+		height: $icon-size;
+		width: $icon-size;
+		margin: 0;
+		margin-right: $icon-size / 3;
+		transform-origin: center;
+		transition: 0.2s transform;
+
+		&:hover,
+		&:focus {
+			transform: scale(1.25);
+		}
+
+		@include media-breakpoint-up(lg) {
+			margin-right: $icon-size / 1.5;
+		}
+
+		&:last-child {
+
+			@include media-breakpoint-up(md) {
+				margin-right: 0;
+			}
+		}
+
+		&.twitter {
+
+			.icon {
+				fill: #00AAEC;
+			}
+		}
+
+		&.facebook {
+
+			.icon {
+				fill: #4460A0;
+			}
+		}
+
+		&.youtube {
+
+			.icon {
+				fill: #CE1312;
+			}
+		}
+
+		&.linkedin {
+
+			.icon {
+				fill: #007EBB;
+			}
+		}
+
+		&.email {
+
+			.icon {
+				fill: $secondary-color;
+			}
+		}
+	}
+
+	a {
+		display: inline-block;
+		margin: 0;
+		text-align: center;
+		width: $icon-size;
+		height: $icon-size;
+		color: theme-color(primary);
+
+		&:hover,
+		&:focus {
+			color: theme-color(secondary);
+		}
+	}
+}

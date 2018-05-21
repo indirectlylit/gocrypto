@@ -1,0 +1,23 @@
+{
+  "name": "snapshotinteractive/wp-goc",
+  "description": "A custom WordPress starter theme.",
+  "version": "1.0.0",
+  "type": "wordpress-theme",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Chance Strickland",
+      "email": "chance@snapshotinteractive.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "composer/installers": "^1.0",
+    "kint-php/kint": "^2.2"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^0.14.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4"
+  }
+}

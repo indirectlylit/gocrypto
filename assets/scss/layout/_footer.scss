@@ -1,0 +1,93 @@
+.site-footer {
+
+	&__top {
+		background: $primary-color;
+		color: #fff;
+		padding-top: 36px;
+		padding-bottom: 36px;
+		@include mq(md) {
+			padding-top: 76px;
+			padding-bottom: 76px;
+		}
+
+		a {
+			color: #fff;
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				color: $tertiary-color;
+			}
+		}
+	}
+
+	&__bottom {
+		background: #fff;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		@include mq(md) {
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+	}
+
+	.copyright {
+		margin-top: 0;
+		padding: 0;
+		font-size: 14px;
+		@include mq(md) {
+			margin: 0;
+		}
+
+		a {
+			font-style: italic;
+		}
+	}
+
+	.menu {
+		font-weight: 400;
+		@include mq(md) {
+			font-size: 18px;
+		}
+	}
+
+	.menu-item {
+
+		> a {
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__main-nav {
+
+		.menu-item {
+
+			> a {
+				color: $tertiary-color;
+			}
+		}
+	}
+
+	&__secondary-nav {
+		font-style: italic;
+
+		.menu-item {
+
+			> a {
+				color: #fff;
+			}
+		}
+
+		.menu-item-has-children {
+			margin-bottom: 0.5em;
+
+			> a {
+				color: $secondary-color;
+			}
+		}
+	}
+}

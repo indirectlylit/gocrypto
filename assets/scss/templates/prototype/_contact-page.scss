@@ -1,0 +1,58 @@
+.contact-page {
+
+	@include centered-header;
+
+	&__heading {
+		margin-bottom: 0.5em;
+		text-align: center;
+
+		@include media-breakpoint-up(md) {
+			text-align: left;
+		}
+	}
+
+	&__social-menu {
+		text-align: center;
+		padding: 0;
+		margin-bottom: 30px;
+
+		@include media-breakpoint-up(lg) {
+			text-align: left;
+		}
+
+		.menu-item {
+			margin-right: 10px;
+			height: 30px;
+			width: 30px;
+
+			a {
+				height: 30px;
+				width: 30px;
+			}
+
+			.icon {
+				height: 30px;
+				width: 30px;
+			}
+
+			@include media-breakpoint-up(lg) {
+				margin-right: 19px;
+			}
+
+			&.email {
+				display: none;
+			}
+		}
+	}
+
+	&__content {
+		padding-bottom: 36px;
+		@include mq(md) {
+			padding-bottom: 76px;
+		}
+	}
+
+	&__content-col {
+		margin-bottom: 2rem;
+	}
+}

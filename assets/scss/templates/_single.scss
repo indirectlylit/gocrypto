@@ -1,0 +1,27 @@
+.single-post {
+
+	&__container {
+		@include section-padding;
+	}
+
+	&__category {
+		@include heading(h4);
+	}
+
+	&__title {
+		@include mq(md) {
+			margin-bottom: 22px;
+		}
+	}
+
+	&__img {
+		margin-bottom: 22px;
+		@include mq(md) {
+			margin-bottom: 44px;
+		}
+	}
+
+	&__sidebar {
+		@include sidebar-styles;
+	}
+}

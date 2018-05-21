@@ -1,0 +1,47 @@
+.page-index {
+
+	&__header {
+		margin-bottom: 20px;
+		@include mq(md) {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__title {
+		@include title-arrow;
+	}
+
+	&__container {
+		@include section-padding;
+	}
+
+	&__grid {
+	}
+
+	&__main {
+
+	}
+
+	&__sidebar {
+		@include sidebar-styles;
+	}
+}
+
+.archive-post {
+	margin-bottom: 2rem;
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+
+	&__title {
+		font-weight: 700;
+	}
+
+	&__more-link {
+		color: $tertiary-color;
+		font-weight: 400;
+		margin-top: 1em;
+		display: inline-block;
+	}
+}

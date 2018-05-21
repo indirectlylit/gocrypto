@@ -1,0 +1,14 @@
+.about-page {
+
+	&__header {
+		@include yellow-hero;
+	}
+
+	&__content {
+		@include section-padding;
+
+		h2 {
+			margin-bottom: 1.5em;
+		}
+	}
+}

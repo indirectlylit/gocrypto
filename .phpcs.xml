@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<ruleset name="goc">
+	<description>A custom set of rules for GoCrypto.</description>
+
+	<!-- Exclude directories. -->
+	<exclude-pattern>/docroot/wp-admin/*</exclude-pattern>
+	<exclude-pattern>/docroot/wp-includes/*</exclude-pattern>
+	<exclude-pattern>/docroot/wp-*.php</exclude-pattern>
+	<exclude-pattern>/docroot/index.php</exclude-pattern>
+	<exclude-pattern>/docroot/xmlrpc.php</exclude-pattern>
+	<exclude-pattern>/docroot/wp-content/plugins/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>*/data/*</exclude-pattern>
+
+	<!-- Only check php code -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Define default report type -->
+	<arg name="report" value="summary"/>
+
+	<!-- Enable colors in report -->
+	<arg name="colors"/>
+
+	<!-- Include the WordPress-Extra standard (with well-reasoned exceptions) -->
+	<rule ref="WordPress-Extra">
+		<exclude name="WordPress.PHP.YodaConditions" />
+	</rule>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.WP.I18n.TranslatorsCommentWrongStyle" />
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
+		<exclude name="WordPress.Variables.GlobalVariables" />
+		<exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine" />
+	</rule>
+
+	<rule ref="Generic.Commenting.Todo"/>
+
+	<config name="minimum_supported_wp_version" value="4.9"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="goc"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array" value="goc"/>
+		</properties>
+	</rule>
+
+	<!-- Allow commented out code. -->
+	<rule ref="Squiz.PHP.CommentedOutCode">
+		<properties>
+			<property name="maxPercentage" value="100" />
+		</properties>
+	</rule>
+
+	<!-- Ref: https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#xss-custom-output-escaping-functions -->
+	<rule ref="WordPress.XSS.EscapeOutput">
+		<properties>
+			<property name="customEscapingFunctions" type="array" value="get_the_tag_list" />
+		</properties>
+	</rule>
+
+</ruleset>

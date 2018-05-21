@@ -1,0 +1,23 @@
+// Colors
+$theme-colors: (
+	primary: #0b08b2,
+	secondary: #ff9811,
+	tertiary: #21c9aa
+);
+
+$primary-color: map-get($theme-colors, primary);
+$secondary-color: map-get($theme-colors, secondary);
+$tertiary-color: map-get($theme-colors, tertiary);
+
+// Colors
+$black: #2d2c2f;
+$light-gray: #fafafa;
+$dark-gray: lighten($black, 25%);
+
+// Fonts and text styles
+$mono: consolas, "Liberation Mono", courier, monospace;
+$slab: "Zilla Slab", helvetica, "Roboto", arial, sans-serif;
+$bold: 700;
+
+$header-font-family: $slab;
+$font-family-monospace: $mono;
