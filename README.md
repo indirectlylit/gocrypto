@@ -1,4 +1,4 @@
-# WordPress Base Theme
+# GoCrypto WordPress Theme
 <!-- TOC -->
 
 - [Features](#features)
@@ -11,11 +11,9 @@
 
 ## Features
 
-* Sass for stylesheets
-* Modern JavaScript
-* Advanced Custom Fields Pro `TODO: Decouple the theme from ACF functions.`
+* Modern JavaScript with code-splitting routes
 * Webpack for compiling assets, and concatenating and minifying files
-* Foundation for sites (6.4) with Sass and XY Grid
+* Bootstrap v4 with Sass
 
 ### Notes
 
